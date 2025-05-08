@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Football Predictor - Make a Prediction</title>
+    </head>
+    <body>
+        <h1>Football Predictor</h1>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/upcoming-games">This weekends games</a>
+            <a href="/predictions/make-prediction">Make a prediction</a>
+            <a href="/predictions">View Predictions</a>
+        </nav>
+
+        <h2>Make a Prediction</h2>
+        
+        <form action="/predictions" method="post">
+            <label for="matches">Select one of the following matches:</label>
+            <select id="matches" name="matches">
+                <%- matchOptions %>
+            </select>
+
+            <br>
+
+            <input type="number" min="0" name="homeTeamScore"> - <input type="number" min="0" name="awayTeamScore">
+
+            <br>
+
+            <button type="submit">Submit Prediction</button>
+        </form>
+    </body>
+</html>
