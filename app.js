@@ -2,6 +2,7 @@ const express = require(`express`);
 const app = express();
 const path = require(`path`);
 const ejs = require(`ejs`);
+const connectDB = require(`./db/mongoose.js`);
 
 // Configuring my env file
 require('dotenv').config();
@@ -10,16 +11,8 @@ require('dotenv').config();
 app.set(`view engine`, `ejs`);
 app.set(`views`, path.resolve(__dirname, `views`));
 
-// MongoDB Variables
-const uri = process.env.MONGO_CONNECTION_STRING;
-const dbAndCol = {db: "CMSC335", collection: "predictionsCollection"};
-
-// Connecting to MongoDB MIGHT NOT USE BECAUSE I WOULD LIKE TO TRY USING MONGOOSE
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1 });
-// client.connect()
-// .then(() => console.log(`Connected to MongoDB`))
-// .catch((err) => console.error(`MongoDB connection error: `, err));
+// Connect to MongoDB
+connectDB();
 
 // Routes
 const indexRoutes = require(`./routes/index`);
