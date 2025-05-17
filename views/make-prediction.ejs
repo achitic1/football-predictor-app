@@ -2,6 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8">
+        
+        <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/css/style.css">
+
         <title>Football Predictor - Make a Prediction</title>
     </head>
     <body>
@@ -9,26 +14,43 @@
 
         <nav>
             <a href="/">Home</a>
-            <a href="/upcoming-games">This weekends games</a>
+            <a href="/upcoming-games">Upcoming games</a>
             <a href="/predictions/make-prediction">Make a prediction</a>
             <a href="/predictions">View Predictions</a>
         </nav>
 
         <h2>Make a Prediction</h2>
-        
-        <form action="/predictions" method="post">
-            <label for="matches">Select one of the following matches:</label>
-            <select id="matches" name="matches">
-                <%- matchOptions %>
-            </select>
 
-            <br>
+        Note: This is the system for making predictions
+        <table border="1">
+            <tr><th>Symbol</th><th>Meaning</th><th></tr>
 
-            <input type="number" min="0" name="homeTeamScore"> - <input type="number" min="0" name="awayTeamScore">
+            <tr><td>1</td><td>Home Team wins</td></tr>
+            <tr><td>2</td><td>Away Team wins</td></tr>
+            <tr><td>X</td><td>Draw</td></tr>
+            <tr><td>1X</td><td>Home Team wins or draw</td></tr>
+            <tr><td>12</td><td>Home or Away win</td></tr>
+            <tr><td>X2</td><td>Draw or Away Team win</td></tr>
+        </table>
 
-            <br>
+        <br>
+    
+        <form action="/predictions/make-prediction" method="post">
+            <fieldset border="1">
+                <label for="matches">Select one of the following matches:</label>
+                <select id="matches" name="matches" required>
+                    <%- matchOptions %>
+                </select>
 
-            <button type="submit">Submit Prediction</button>
+                <br>
+
+                <label for="userName">Your name:</label><input type="text" id="userName" name="userName" required>
+                <br>
+                <label for="prediction">Your Prediction:</label><input type="text" id="prediction" name="prediction" required>
+                <br>
+
+                <button type="submit">Submit Prediction</button>
+            </fieldset>
         </form>
     </body>
 </html>

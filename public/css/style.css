@@ -1,0 +1,26 @@
+body {
+    font-family: "Germania One", sans-serif;
+    background-color: lightblue;
+    width: 80vh;
+    margin: auto;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+nav * {
+    border: .2rem solid black;
+    background-color: white;
+    padding: .5rem;  
+}
+
+nav *:hover{
+    background-color: lightblue;
+}
+
+

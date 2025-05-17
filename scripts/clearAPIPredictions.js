@@ -1,11 +1,11 @@
 const mongoose = require(`mongoose`);
 const APIPrediction = require(`../models/apiPrediction.js`);
+const path = require(`path`);
+require(`dotenv`).config({path: path.resolve(__dirname, `../.env`)});
 
 function clearCollection() {
     mongoose.connect(process.env.MONGODB_URI)
-    .then(() => {
-        return APIPrediction.deleteMany({});
-    })
+    .then(() => APIPrediction.deleteMany({}) )
     .then(() => {
         console.log('Collection cleared');
     })
@@ -16,3 +16,5 @@ function clearCollection() {
         mongoose.disconnect().then( () => console.log(`Disconnected`));
     });
 }
+
+clearCollection();

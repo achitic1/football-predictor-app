@@ -7,21 +7,25 @@ const connectDB = require(`./db/mongoose.js`);
 // Configuring my env file
 require('dotenv').config();
 
+// Connect to MongoDB
+connectDB();
+
 // Setting up the renderer
 app.set(`view engine`, `ejs`);
 app.set(`views`, path.resolve(__dirname, `views`));
 
-// Connect to MongoDB
-connectDB();
+// Middleware for parsing post request bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// Middleware for exposing my stylesheet and other files
+app.use(express.static('public'));
+
 
 // Routes
 const indexRoutes = require(`./routes/index`);
 const predictionRoutes = require(`./routes/predictions`);
 const upcomingGamesRoutes = require(`./routes/upcoming-games`);
-
-// Middleware for parsing post request bodies
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use(`/`, indexRoutes);

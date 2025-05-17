@@ -2,6 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8">
+
+        <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/css/style.css">
+
         <title>Football Predictor - User Predictions</title>
     </head>
     <body>
@@ -9,7 +14,7 @@
 
         <nav>
             <a href="/">Home</a>
-            <a href="/upcoming-games">This weekends games</a>
+            <a href="/upcoming-games">Upcoming games</a>
             <a href="/predictions/make-prediction">Make a prediction</a>
             <a href="/predictions">View Predictions</a>
         </nav>
@@ -17,6 +22,6 @@
         <h2>User Predictions</h2>
         Predictions made by other users:
 
-        <%- predictionsList %>
+        <%- userPredictionsTable %>
     </body>
 </html>

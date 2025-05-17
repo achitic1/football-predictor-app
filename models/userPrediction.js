@@ -1,6 +1,11 @@
 const mongoose = require(`mongoose`);
 
-const userPredictionSchema = new mongoose.Schema({
+const userPredictionSchema = mongoose.Schema({
+    userName: {
+        type: String, 
+        required: true,
+        immutable: false
+    },
     homeTeam: {
         type: String,
         required: true,
@@ -11,6 +16,11 @@ const userPredictionSchema = new mongoose.Schema({
         required: true,
         immutable: true
     }, 
+    prediction: {
+        type: String, 
+        required: true, 
+        immutable: false
+    },
     date: {
         type: Date,
         required: true, 
@@ -18,8 +28,8 @@ const userPredictionSchema = new mongoose.Schema({
     }
 });
 
-userPredictionSchema.index({ homeTeam: 1, awayTeam: 1, date: 1}, {unique: true});
+userPredictionSchema.index({ userName: 1, homeTeam: 1, awayTeam: 1, prediction: 1, date: 1}, {unique: true});
 
 const UserPrediction = mongoose.model(`UserPrediction`, userPredictionSchema);
 
-module.export = UserPrediction;
+module.exports = UserPrediction;
